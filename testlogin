@@ -1,0 +1,19 @@
+public void testLogin() {
+    launchApplication();
+    navigateTo("LoginPage");
+    enterUsername("test_user");
+    enterPassword("secure_password");
+    clickLoginButton();
+    verifyLoginSuccess();
+    closeApplication();
+}
+
+// Modular methods (representing reusable functions)
+
+void launchApplication() { /* Open browser or app */ }
+void navigateTo(String page) { /* Navigate to given page */ }
+void enterUsername(String username) { /* Fill in username */ }
+void enterPassword(String password) { /* Fill in password */ }
+void clickLoginButton() { /* Click login */ }
+void verifyLoginSuccess() { /* Assert login success */ }
+void closeApplication() { /* Close browser/app */ }

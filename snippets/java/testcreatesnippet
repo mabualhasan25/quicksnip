@@ -1,0 +1,31 @@
+title = "testcreatesnippet";
+description = "testing";
+author = "mabualhasan25";
+public void testCreateSnippet() {
+    for (SnippetData data : getSnippetData()) {
+        launchApplication();
+        loginAs(data.username, data.password);
+        createSnippet(data.title, data.language, data.code);
+        verifySnippetCreated(data.title);
+        logout();
+        closeApplication();
+    }
+}
+
+// Sample data structure
+class SnippetData {
+    String username;
+    String password;
+    String title;
+    String language;
+    String code;
+}
+
+// Fake data source
+List<SnippetData> getSnippetData() {
+    return Arrays.asList(
+        new SnippetData("dev_user1", "pass123", "Hello World JS", "JavaScript", "console.log(\"Hello, world!\");"),
+        new SnippetData("dev_user2", "secret456", "Sort Array", "Python", "arr.sort()"),
+        new SnippetData("dev_user3", "pass789", "SQL Join Example", "SQL", "SELECT * FROM A JOIN B ON A.id=B.id;")
+    );
+}

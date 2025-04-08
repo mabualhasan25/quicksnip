@@ -1,0 +1,45 @@
+// Each test step from the keyword table
+public void testSearchKeywordDriven() {
+    executeStep("OpenApp", null, null);
+    executeStep("Login", "username_field", "user1");
+    executeStep("Input", "password_field", "mypassword");
+    executeStep("Click", "login_button", null);
+    executeStep("Input", "search_bar", "Hello World");
+    executeStep("Click", "search_button", null);
+    executeStep("Verify", "search_results", "contains 'Hello World'");
+    executeStep("Logout", null, null);
+    executeStep("CloseApp", null, null);
+}
+
+// Driver method that interprets each keyword
+void executeStep(String keyword, String object, String value) {
+    switch (keyword) {
+        case "OpenApp":
+            launchApplication();
+            break;
+        case "Login":
+            input(object, value); // username field
+            break;
+        case "Input":
+            input(object, value);
+            break;
+        case "Click":
+            click(object);
+            break;
+        case "Verify":
+            verify(object, value);
+            break;
+        case "Logout":
+            logout();
+            break;
+        case "CloseApp":
+            closeApplication();
+            break;
+    }
+}
+
+// Placeholder methods for keywords
+void input(String object, String value) { /* Enter data */ }
+void click(String object) { /* Simulate click */ }
+void verify(String object, String condition) { /* Check result */ }
+void logout() { /* Log out */ }
